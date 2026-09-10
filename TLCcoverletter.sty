@@ -1,31 +1,27 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{TLCcoverletter}[12/27/21 cover letter package]
-% Author: Timmy Chan
+\ProvidesPackage{TLCcoverletter}[09/10/26 standard US business letter package]
+% Adapted from Timmy Chan's original TLCcoverletter.sty
+% Reformatted for a conventional US professional business-letter look.
 
-% Assuming using "article" document class and letter sized paper.
-% FONT STUFF
+% ---- FONT ----
+% Standard business letters use a plain serif face (Times-like), not a
+% sans-serif "resume" font.
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathptmx} % Times-like serif text & math font
 
-\RequirePackage[T1]{fontenc} %  Font encoding https://texfaq.org/FAQ-why-inp-font
-\RequirePackage[default,semibold]{sourcesanspro}
-\RequirePackage[12pt]{moresize}
-\usepackage{anyfontsize}
-\RequirePackage{csquotes}
+% ---- MARGINS AND SPACING ----
+% 1 inch margins are the US business-letter norm (vs. the 0.5in "resume" margin).
+\RequirePackage[top=0.6in,bottom=0.6in,left=0.7in,right=0.7in,headheight=0pt,headsep=0pt]{geometry}
+\setlength{\parskip}{0.7em}
+\setlength{\parindent}{0in} % full block style: no first-line indent
 
-% MARGINS AND SPACING
-\RequirePackage[margin=.5in]{geometry} % Set Margins
-\setlength{\parskip}{1em}
-%\setlength{\parindent}{1in}
-
-% COLOR
+% ---- COLOR / LINKS ----
+% No accent color; links render as plain black text, as on a printed letter.
 \RequirePackage{xcolor}
-\definecolor{highlight}{RGB}{61, 90, 128} % CHANGE THIS TO YOUR FAV COLOR https://g.co/kgs/aoqdi7
-
-% LINKS
 \RequirePackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=highlight}
+\hypersetup{hidelinks}
 
-
-% BOLD COMMAND
+% BOLD COMMAND (kept for compatibility with existing content files)
 \newcommand{\bold}[1]{ {\bfseries #1}}
 
 % NO PAGE NUMBER
@@ -35,8 +31,5 @@
 \RequirePackage{standalone}
 \RequirePackage{import}
 
-
-% FOR TEMPLATE FILLER
 \RequirePackage[english]{babel}
-\RequirePackage{blindtext}% Filler Text
-
+\RequirePackage{blindtext} % Filler Text
